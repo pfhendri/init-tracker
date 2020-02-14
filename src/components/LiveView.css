@@ -1,0 +1,68 @@
+:root {
+  --primary: #172A3A;
+  --secondary: #004346;
+  --highlight: #75DDDD;
+}
+
+.player {
+  font-size: 3.5rem;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  user-select: none;
+  font-weight: bold;
+  color: var(--primary)
+}
+
+.back-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;  
+}
+
+.round {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  text-align: center;
+  font-size: 2rem;
+  background: var(--primary);
+  color: var(--primary)
+}
+
+.flag span {
+  display: block; 
+  font-size: 1.5rem;
+  text-decoration: underline;
+  padding-bottom: .5rem;
+}
+
+.flag {
+  background: tan;
+  width: 150px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 1rem 1rem 1.5rem;
+  display: block;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.35);
+  border: 1px solid black;
+  border-bottom: var(--secondary) 1rem solid;
+  border-top: none;
+}
+
+@media screen and (min-width: 900px) {
+  .player {
+    font-size: 5rem;
+  }
+  .round {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .player {
+    font-size: 8rem;
+  }
+}

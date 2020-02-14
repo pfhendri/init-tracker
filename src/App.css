@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+:root {
+  --primary: #172A3A;
+  --secondary: #004346;
+  --highlight: #75DDDD;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+  margin: auto;
+  display: grid;
+  place-content: center;
+  height: 100%;
+  background-image: url(./assets/paper.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.PlayerList{
+  background: white;
+  padding: 1rem;
+  max-width: 90%;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.PlayerList h1 {
+  padding: 1rem;
+  background: var(--secondary);
   color: white;
+  margin: -1rem -1rem 1rem
 }
 
-.App-link {
-  color: #61dafb;
+.new-player-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: .5rem;
+  max-width: 90%;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type=text], input[type=number] {
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  border: 2px solid #eee;
+  font-size: 1rem;
+}
+
+.player-list{
+  height: 12rem;
+  overflow-y: auto;
+}
+
+.player-item{
+  padding: .5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 70px auto;
+  box-sizing: border-box;
+  grid-gap: .5rem;
+}
+
+.player-item:nth-child(2n){
+  background: #eee;
+}
+
+hr{
+  background: var(--primary);
+  border: var(--primary) solid 1px;
+}
+
+.button-actions{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-actions .btn {
+  margin-right: 1rem;
+  margin-top: .5rem;
+}
+
+.button-actions .btn:last-child{
+  margin-right: 0;
+}
+
+.btn{
+  padding: 1rem 1.4rem;
+  border: var(--primary) solid 2px;
+  color: var(--highlight);
+  background: var(--secondary);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn:hover, .btn:focus, .btn:active{
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
 }
