@@ -10,6 +10,8 @@ export const ListProvider = (props) => {
 
   const [lists, setLists] = useState([])
 
+  const [listNotification, setListNotification] = useState(null)
+
   useEffect(() => {
     const savedLists = localStorage.getItem('savedLists')
     if(savedLists){
@@ -66,6 +68,7 @@ export const ListProvider = (props) => {
     setLists(updatedLists)
     localStorage.setItem('savedLists', JSON.stringify(updatedLists))  
     newList()
+    setListNotification('List Removed')
   }
 
   const saveList = () => {
@@ -79,10 +82,15 @@ export const ListProvider = (props) => {
     setLists(updatedLists)
     localStorage.setItem('savedLists', JSON.stringify(updatedLists))
     setNewList(false)
+    setListNotification('List Saved')
+  }
+
+  const clearNotification = () => {
+    setListNotification(null)
   }
 
   return(
-    <ListContext.Provider value={ { isNewList, currentList, addPlayer, updatePlayer, removePlayer, lists, newList, setCurrentList, updateList, clearList, removeList, saveList } }>
+    <ListContext.Provider value={ { isNewList, currentList, addPlayer, updatePlayer, removePlayer, lists, newList, setCurrentList, updateList, clearList, removeList, saveList, listNotification, clearNotification } }>
       {props.children}
     </ListContext.Provider>
   )

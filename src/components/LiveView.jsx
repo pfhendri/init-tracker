@@ -5,21 +5,21 @@ import { ListContext } from '../contexts/ListContext'
 import './LiveView.css'
 
 export default (props) => {
-  const { list } = useContext(ListContext)
+  const { currentList: { players } } = useContext(ListContext)
   const { closeView } = props
 
   const [currentPlayer, setCurrentPlayer] = useState(0)
   const [round, setCurrentRound] = useState(1)
 
   const initOrderList = () => {
-    const sorted = list.slice().sort((pla_a, pla_b) => pla_b.init - pla_a.init)
+    const sorted = players.slice().sort((pla_a, pla_b) => pla_b.init - pla_a.init)
     return sorted
   }
 
   const orderedList = initOrderList()
 
   const nextPlayer = () => {
-    if(currentPlayer + 1 < list.length){
+    if(currentPlayer + 1 < players.length){
       setCurrentPlayer(currentPlayer + 1)
     } else {
       setCurrentPlayer(0)
@@ -27,7 +27,7 @@ export default (props) => {
     }
   }
 
-  if (!list[currentPlayer]) {
+  if (!players[currentPlayer]) {
     return 'Loading...'
   }
 
