@@ -12,7 +12,8 @@ export default (props) => {
   const [round, setCurrentRound] = useState(1)
 
   const initOrderList = () => {
-    return list.sort((pla_a, pla_b) => pla_a.init - pla_b.init)
+    const sorted = list.sort((pla_a, pla_b) => pla_b.init - pla_a.init)
+    return sorted
   }
 
   const orderedList = initOrderList()
