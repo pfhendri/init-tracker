@@ -41,6 +41,7 @@ export default (props) => {
       <div onClick={nextPlayer} className='player'>
         {orderedList[currentPlayer].name}
       </div>
+      <div className='tap-hint'>Tap to move initiative forward</div>
       <button type='button' className='back-button btn' onClick={closeView}>Back</button>
     </>
   )

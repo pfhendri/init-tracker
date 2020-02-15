@@ -12,7 +12,8 @@
   place-content: center;
   user-select: none;
   font-weight: bold;
-  color: var(--primary)
+  color: var(--primary);
+  text-align: center;
 }
 
 .back-button {
@@ -50,6 +51,15 @@
   border: 1px solid black;
   border-bottom: var(--secondary) 1rem solid;
   border-top: none;
+}
+
+.tap-hint{
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 900px) {
