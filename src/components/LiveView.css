@@ -60,6 +60,7 @@
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
+  width: 50%;
 }
 
 @media screen and (min-width: 900px) {
