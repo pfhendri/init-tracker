@@ -12,6 +12,7 @@ const ServiceWorkerApp = () => {
   const [installPrompt, setInstallPrompt] = React.useState(null)
 
   const installApp = async () => {
+    alert('installing!')
     if(!installPrompt) return false
 
     installPrompt.prompt()
