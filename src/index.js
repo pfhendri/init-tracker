@@ -17,10 +17,6 @@ const ServiceWorkerApp = () => {
       console.log('Install Prompt Fired')
 
       setInstallPrompt(e)
-
-      if((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true){
-        return false;
-      }
       
       if(installPrompt){
         handleNotification(<div>Would you like to install this App on your device? <button className='btn btn-negative' onClick={installApp}>Install</button></div>)
