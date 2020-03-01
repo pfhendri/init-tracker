@@ -16,7 +16,7 @@ const ServiceWorkerApp = () => {
     // If you want your app to work offline and load faster, you can change
     // unregister() to register() below. Note this comes with some pitfalls.
     // Learn more about service workers: https://bit.ly/CRA-PWA
-
+    // blah
     serviceWorker.register({
       onSuccess: (reg) => { handleNotification('Successfully Installed') },
       onUpdate: (reg) => { handleNotification(<p>App ready to update! <button class='btn btn-negative' onClick={() => window.location.reload()}>Update</button></p>) }
