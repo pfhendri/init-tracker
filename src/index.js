@@ -17,10 +17,8 @@ const ServiceWorkerApp = () => {
       console.log('Install Prompt Fired')
 
       setInstallPrompt(e)
-      
-      if(installPrompt){
-        handleNotification(<div>Would you like to install this App on your device? <button className='btn btn-negative' onClick={installApp}>Install</button></div>)
-      }
+
+      handleNotification(<div>Would you like to install this App on your device? <button className='btn btn-negative' onClick={installApp}>Install</button></div>)
     })
 
     const installApp = async () => {
