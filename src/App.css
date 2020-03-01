@@ -50,16 +50,27 @@ input[type=text], input[type=number] {
 }
 
 .player-item{
-  padding: .5rem;
+  padding: .5rem .5rem .5rem 1rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 70px auto;
   box-sizing: border-box;
   grid-gap: .5rem;
+  align-items: center;
+}
+
+.player-item input {
+  padding: 1rem
 }
 
 .player-item:nth-child(2n){
   background: #eee;
+}
+
+.player-name{
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 hr{

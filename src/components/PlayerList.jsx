@@ -83,7 +83,7 @@ export default function PlayerList() {
         <ul className='player-list'>
           {currentList.players.map( (player, i) => (
             <li key={player.name} className='player-item'>
-              {player.name} 
+              <div className='player-name'>{player.name}</div> 
               <input 
                 type='number' 
                 value={player.init}

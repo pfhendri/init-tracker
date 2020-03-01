@@ -35,8 +35,8 @@ export const ListProvider = (props) => {
   }
 
   const removePlayer = (id) => {
-    const updatedList = currentList.filter(player => player.id !== id)
-    setList(updatedList)
+    const updatedList = currentList.players.filter(player => player.id !== id)
+    setList({ ...currentList, players: updatedList })
   }
 
   const newList = () => {
