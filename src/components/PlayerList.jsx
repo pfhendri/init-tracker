@@ -104,7 +104,7 @@ export default function PlayerList() {
         </div>
       </div>
 
-          { currentList.players.length === 0 && <div className='missing-player-notification'>Please add a Player or List of Players to start initiative</div> }
+      { currentList.players.length === 0 && <div className='missing-player-notification'>Please add a Player or List of Players to start initiative</div> }
     </>
   )
 }

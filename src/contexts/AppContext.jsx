@@ -3,13 +3,16 @@ import React from 'react'
 // Import other contexts
 import { ListProvider } from './ListContext'
 import { InitiativeProvider } from './InitContext'
+import { SwProvider } from './SwContext'
 
 export const AppProvider = ({children}) => {
   return(
-    <ListProvider>
-      <InitiativeProvider>
-        {children}
-      </InitiativeProvider>
-    </ListProvider>
+    <SwProvider>
+      <ListProvider>
+        <InitiativeProvider>
+          {children}
+        </InitiativeProvider>
+      </ListProvider>
+    </SwProvider>
   )
 }
