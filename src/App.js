@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import PlayerList from './components/PlayerList'
 import LiveView from './components/LiveView'
 
+import { InitiativeContext } from './contexts/InitContext'
+
 import './App.css';
 
 function App() {
-  const [startInit, setStartInit] = useState(false)
+  const { startInit } = useContext(InitiativeContext)
+
   return (
     <div className="App">
       { startInit ? 
-        <LiveView closeView={() => setStartInit(false)} /> :
-        <PlayerList openView={() => setStartInit(true)} />
+        <LiveView /> :
+        <PlayerList />
       }
     </div>
   );

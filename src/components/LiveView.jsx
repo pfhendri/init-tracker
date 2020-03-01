@@ -1,33 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
-import { ListContext } from '../contexts/ListContext'
+import { InitiativeContext } from '../contexts/InitContext'
 
 import './LiveView.css'
 
-export default (props) => {
-  const { currentList: { players } } = useContext(ListContext)
-  const { closeView } = props
+export default () => {
+  
+  const { round, currentPlayer, nextPlayer, orderedList, endInitiative } = useContext(InitiativeContext)
 
-  const [currentPlayer, setCurrentPlayer] = useState(0)
-  const [round, setCurrentRound] = useState(1)
-
-  const initOrderList = () => {
-    const sorted = players.slice().sort((pla_a, pla_b) => pla_b.init - pla_a.init)
-    return sorted
-  }
-
-  const orderedList = initOrderList()
-
-  const nextPlayer = () => {
-    if(currentPlayer + 1 < players.length){
-      setCurrentPlayer(currentPlayer + 1)
-    } else {
-      setCurrentPlayer(0)
-      setCurrentRound(round + 1)
-    }
-  }
-
-  if (!players[currentPlayer]) {
+  if (orderedList.length === 0) {
     return 'Loading...'
   }
 
@@ -40,10 +21,10 @@ export default (props) => {
         </div>
       </div>
       <div onClick={nextPlayer} className='player'>
-        {orderedList[currentPlayer].name}
+        {currentPlayer.name}
       </div>
       <div className='tap-hint'>Tap to move initiative forward</div>
-      <button type='button' className='back-button btn' onClick={closeView}>Back</button>
+      <button type='button' className='back-button btn' onClick={endInitiative}>Back</button>
     </>
   )
 }

@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react'
 
 import Notification from '../components/Notifications/Notification'
 import { ListContext } from '../contexts/ListContext'
+import { InitiativeContext } from '../contexts/InitContext'
 
-export default function PlayerList(props) {
+export default function PlayerList() {
   const [newPlayer, setNewPlayer] = useState({ id: null, name: '', init: 0 })
-  const { openView } = props
   const {
     currentList,
     lists, 
@@ -20,6 +20,8 @@ export default function PlayerList(props) {
     listNotification, 
     clearNotification
   } = useContext(ListContext)
+
+  const { startInitiative, initCount, restartInitative } = useContext(InitiativeContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -97,7 +99,8 @@ export default function PlayerList(props) {
         </div>
         <hr />
         <div style={{display: 'flex', justifyContent: 'center' }}>
-          <button type='button' className='btn' onClick={openView}>Start Initiative</button>
+          <button type='button' className='btn' onClick={startInitiative}>Start Initiative</button>
+          { initCount > 0 && <button type='button' className='btn' onClick={restartInitative}>Restart Initiative</button> }
         </div>
       </div>
     </>
