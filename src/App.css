@@ -107,3 +107,32 @@ hr{
   color: var(--primary);
   cursor: pointer;
 }
+
+.btn:disabled{
+  background: #eee;
+  color: #999;
+  border-color: #aaa;
+  cursor: not-allowed;
+}
+
+.init-buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.init-buttons.beyond .btn:first-child{
+  margin-right: .5rem;
+}
+
+.missing-player-notification{
+  width: 50%;
+  margin-left: 25%;
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  font-size: 1rem;
+  padding: .5rem;
+}

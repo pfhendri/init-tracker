@@ -98,11 +98,13 @@ export default function PlayerList() {
           <button type='button' className='btn' onClick={removeList}>Remove List</button>
         </div>
         <hr />
-        <div style={{display: 'flex', justifyContent: 'center' }}>
-          <button type='button' className='btn' onClick={startInitiative}>Start Initiative</button>
+        <div className={ initCount > 0 ? 'init-buttons beyond' : 'init-buttons'}>
+          <button type='button' disabled={currentList.players.length === 0} className='btn' onClick={startInitiative}>Start Initiative</button>
           { initCount > 0 && <button type='button' className='btn' onClick={restartInitative}>Restart Initiative</button> }
         </div>
       </div>
+
+          { currentList.players.length === 0 && <div className='missing-player-notification'>Please add a Player or List of Players to start initiative</div> }
     </>
   )
 }
