@@ -139,7 +139,7 @@ hr{
 
 .missing-player-notification{
   width: 70%;
-  margin-left: 15%;
+  margin-left: calc(15% - .5rem);
   position: absolute;
   bottom: 1rem;
   text-align: center;
