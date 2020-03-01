@@ -17,8 +17,6 @@ const ServiceWorkerApp = () => {
     // unregister() to register() below. Note this comes with some pitfalls.
     // Learn more about service workers: https://bit.ly/CRA-PWA
 
-    // thing
-
     serviceWorker.register({
       onSuccess: (reg) => { handleNotification('Successfully Installed') },
       onUpdate: (reg) => { handleNotification(<p>App Ready to update! Please close and reopen the app <button onClick={() => window.location.reload()}>Update</button></p>) }
