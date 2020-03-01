@@ -19,7 +19,7 @@ const ServiceWorkerApp = () => {
 
     serviceWorker.register({
       onSuccess: (reg) => { handleNotification('Successfully Installed') },
-      onUpdate: (reg) => { handleNotification(<p>App Ready to update! Please close and reopen the app <button onClick={() => window.location.reload()}>Update</button></p>) }
+      onUpdate: (reg) => { handleNotification(<p>App ready to update! <button class='btn btn-negative' onClick={() => window.location.reload()}>Update</button></p>) }
     });
   }, [])
 
