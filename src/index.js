@@ -9,33 +9,8 @@ import { SwContext } from './contexts/SwContext'
 
 const ServiceWorkerApp = () => {
   const { handleNotification } = React.useContext(SwContext)  
-  const [installPrompt, setInstallPrompt] = React.useState(null)
-
-  const installApp = async () => {
-    alert('installing!')
-    if(!installPrompt) return false
-
-    installPrompt.prompt()
-    let outcome = await this.installPrompt.userChoice
-    if(outcome.outcome === 'accepted'){
-      console.log("App Installed")
-    }
-    else{
-      console.log("App not installed");
-    }
-
-    setInstallPrompt(null)
-  }
 
   React.useEffect( () => {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      console.log('Install Prompt Fired')
-
-      setInstallPrompt(e)
-
-      handleNotification(<div>Would you like to install this App on your device? <button className='btn btn-negative' onClick={installApp}>Install</button></div>)
-    })
 
     serviceWorker.register({
       onUpdate: (reg) => { 
