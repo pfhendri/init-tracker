@@ -6,7 +6,7 @@ import './LiveView.css'
 
 export default () => {
   
-  const { round, currentPlayer, nextPlayer, orderedList, endInitiative } = useContext(InitiativeContext)
+  const { round, currentPlayer, goToNextPlayer, orderedList, endInitiative, playerOnDeck } = useContext(InitiativeContext)
 
   if (orderedList.length === 0) {
     return 'Loading...'
@@ -20,11 +20,20 @@ export default () => {
           {round}
         </div>
       </div>
-      <div onClick={nextPlayer} className='player'>
-        {currentPlayer.name}
+      <div onClick={goToNextPlayer} className='player'>
+        <div className='currentPlayer'>{currentPlayer.name} ({currentPlayer.init})</div>
+        <div className='nextPlayer'>
+          Next: <br />
+          {playerOnDeck.name} ({playerOnDeck.init})
+        </div>
       </div>
       <div className='tap-hint'>Tap to move initiative forward</div>
-      <button type='button' className='back-button btn' onClick={endInitiative}>Back</button>
+      <button 
+        type='button' 
+        className='back-button btn' 
+        onClick={endInitiative}>
+          Back
+      </button>
     </>
   )
 }

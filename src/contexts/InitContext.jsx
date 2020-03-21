@@ -7,7 +7,7 @@ const initialState = {
   initCount: 0,
   currentPlayer: null,
   orderedList: [],
-  nextPlayer: () => {},
+  goToNextPlayer: () => {},
   startInit: () => {},
   startInitiative: () => {}, 
   endInitiative: () => {}, 
@@ -20,10 +20,9 @@ export const InitiativeProvider = ({children}) => {
   const [startInit, setStartInit] = useState(false)
   const [round, setRound] = useState(1)
   const [currentPlayer, setCurrentPlayer] = useState(null)
+  const [playerOnDeck, setPlayerOnDeck] = useState(null)
   const [orderedList, setOrderedList] = useState([])
-
   const [initCount, setInitCount] = useState(0)
-
   const { currentList: { players } } = useContext(ListContext)
 
   useEffect(() => {
@@ -35,34 +34,32 @@ export const InitiativeProvider = ({children}) => {
     initOrderList()
   }, [players])
 
-  const nextPlayer = () => {
+  const goToNextPlayer = () => {
     const currentPlayerIndex = orderedList.findIndex(player => player.id === currentPlayer.id)
     if(currentPlayerIndex + 1 < orderedList.length){
       const player = orderedList[currentPlayerIndex + 1]
       setCurrentPlayer(player)
+      if(currentPlayerIndex + 2 < orderedList.length){
+        setPlayerOnDeck(orderedList[currentPlayerIndex + 2])
+      }else {
+        setPlayerOnDeck(orderedList[0])
+      }
     } else {
       setCurrentPlayer(orderedList[0])
+      setPlayerOnDeck(orderedList[1])
       setRound(round + 1)
     }
     setInitCount(initCount + 1)
   }
 
-  const firstPlayer = () => {
-    console.log(orderedList)
-    let firstPlayer = orderedList[0]
-    orderedList.forEach(player => {
-      if (parseInt(player.init) > parseInt(firstPlayer.init)){
-        firstPlayer = player
-      }
-    })
-    return firstPlayer
-  }
-
   const startInitiative = () => {
     setStartInit(true)
     if(initCount === 0){
-      const player = firstPlayer()
-      setCurrentPlayer(player)
+      setCurrentPlayer(orderedList[0])
+      setPlayerOnDeck(orderedList[1])
+    } else {
+      const currentPlayerIndex = orderedList.findIndex(player => player.id === currentPlayer.id)
+      setPlayerOnDeck(orderedList[currentPlayerIndex + 1])
     }
   }
 
@@ -71,8 +68,8 @@ export const InitiativeProvider = ({children}) => {
   }
 
   const restartInitative = () => {
-    const player = firstPlayer()
-    setCurrentPlayer(player)
+    setCurrentPlayer(orderedList[0])
+    setPlayerOnDeck(orderedList[1])
     startInitiative()
     setRound(1)
     setInitCount(0)
@@ -83,7 +80,8 @@ export const InitiativeProvider = ({children}) => {
       round, 
       initCount, 
       currentPlayer, 
-      nextPlayer, 
+      playerOnDeck,
+      goToNextPlayer, 
       orderedList, 
       startInit, 
       startInitiative, 
