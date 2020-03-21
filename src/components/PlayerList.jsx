@@ -55,14 +55,14 @@ export default function PlayerList() {
       <div className='PlayerList'>
         <h1>Player List</h1>
         { isNewList ? <div>
-          <input type='text' list='playerLists' placeholder='Enter new list name, or select one' onChange={handleListNameChange} style={{ width: '100%', marginBottom: '.5rem', padding: '.5rem'}}/>
+          <input type='text' list='playerLists' placeholder='Enter new list name, or select one' onChange={handleListNameChange} style={{ width: '100%', marginBottom: '.5rem', padding: '.5rem', fontSize: '1rem'}}/>
           <datalist id='playerLists'>
             {lists.map((list, i) => (
               <option value={list.name} key={list.id}/>
             ))}
           </datalist>
         </div> : 
-        <select defaultValue={currentList.id} onChange={handleListSelect} style={{ width: '100%', marginBottom: '.5rem', padding: '.5rem', border: '2px solid #eee'}}>
+        <select defaultValue={currentList.id} onChange={handleListSelect} style={{ width: '100%', marginBottom: '.5rem', padding: '.5rem', border: '2px solid #eee', fontSize: '1rem'}}>
           <option value=''>New List</option>
           {lists.map((list, i) => (
             <option value={list.id} key={list.id}>{list.name}</option>
