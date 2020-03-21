@@ -17,7 +17,7 @@ const ServiceWorkerApp = () => {
         handleNotification(<div>App ready to update! <button class='btn btn-negative' onClick={() => window.location.reload()}>Update</button></div>) 
       }
     });
-  }, [])
+  }, [handleNotification])
 
   return <App />
 }

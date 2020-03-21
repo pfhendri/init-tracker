@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Notification from '../components/Notifications/Notification'
 
@@ -11,9 +11,9 @@ export const SwContext = React.createContext(initialContext)
 export const SwProvider = ({children}) => {
   const [notification, setNotification] = useState(null)
   
-  const handleNotification = (text) => {
+  const handleNotification = useCallback( (text) => {
     setNotification(text) 
-  }
+  }, [])
 
   return(
     <SwContext.Provider value={{ handleNotification }}>
